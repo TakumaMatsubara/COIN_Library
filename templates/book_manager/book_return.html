@@ -1,19 +1,18 @@
-{% extends 'library/base.html' %}
+{% extends 'book_manager/base.html' %}
 {% block content %}
 <form action="" method="POST">
     <table class="table">
         <tr>
-            <!-- thタグの部分が表示されてない，booklistってどこからきてる？models.pyから？ -->
             <th>タイトル</th>
-            <td>{{ booklist.title }}</td>
+            <td>{{ book.title }}</td>
         </tr>
         <tr>
             <th>貸出日時</th>
-            <td>{{ booklist.date }}</td>
+            <td>{{ book.date }}</td>
         </tr>
         <tr>
             <th>学籍番号</th>
-            <td>{{ booklist.studentid }}</td>
+            <td>{{ book.studentid }}</td>
         </tr>
     </table>
     <button type="submit" class="btn btn-primary">返却</button>

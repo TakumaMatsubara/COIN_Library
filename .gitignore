@@ -1,5 +1,8 @@
 .vscode
 coin-book-pre-ver/
+migrations/
+firebase/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

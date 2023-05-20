@@ -1,8 +1,8 @@
-{% extends 'library/base.html' %}
+{% extends 'book_manager/base.html' %}
 
 {% block content %}
 <h2>本一覧</h2>
-<p>{{username}}</p>
+<!-- <p>{{username}}</p> -->
 <table class="table">
     <!-- theadタグは水平方向をグループ化 -->
     <thead>
@@ -14,13 +14,14 @@
         </tr>
     </thead>
     <tbody>
-        {% for book in booklist_list %}
+
+        {% for book in book_list %}
         <tr>
             <td>{{ book.title }}</td>
             <td>{{ book.date }}</td>
             <td>{{ book.studentid }}</td>
             <!--book.pkをbook.idでもおｋ-->
-            <td><a href="{% url 'library:return' book.id %}">返却</a></td>
+            <td><a href="{% url 'book_manager:return' book.id %}">返す</a></td>
         </tr>
         {% endfor %}
     </tbody>
