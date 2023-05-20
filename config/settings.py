@@ -12,19 +12,23 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+# env = environ.Env()
+# env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-g9!xu#6o0u%^j71u4_v-u#y3!rk9a_1b8a92cpy)u-)dgxs_gx'
+# SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "*"
+# DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -81,7 +85,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+# DATABASES = {
+#     'default': env.db(),
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -118,7 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -132,3 +138,7 @@ LOGIN_URL = '/book_manager/login'
 LOGIN_REDIRECT_URL = '/book_manager'
 # ログアウト後にリダイレクトされるURLを指定
 LOGOUT_REDIRECT_URL='/book_manager/login'
+
+# CORS_ORIGIN_WHITELIST = env.list('CORS_ORIGIN_WHITELIST')
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
