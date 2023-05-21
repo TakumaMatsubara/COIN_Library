@@ -13,24 +13,46 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import environ
+from settings_local import *
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-# env = environ.Env()
-# env.read_env(os.path.join(BASE_DIR, '.env'))
+# env = environ.Env(DEBUG=(bool, False))
+# env_file = os.path.join(BASE_DIR, ".env")
+
+# import io
+# from urllib.parse import urlparse
+# from google.cloud import secretmanager
+# if os.path.isfile(env_file):
+#     # Use a local secret file, if provided
+
+#     env.read_env(env_file)
+# # ...
+# elif os.environ.get("GOOGLE_CLOUD_PROJECT", None):
+#     # Pull secrets from Secret Manager
+#     project_id = os.environ.get("GOOGLE_CLOUD_PROJECT")
+
+#     client = secretmanager.SecretManagerServiceClient()
+#     settings_name = os.environ.get("SETTINGS_NAME", "django_settings")
+#     name = f"projects/{project_id}/secrets/{settings_name}/versions/latest"
+#     payload = client.access_secret_version(name=name).payload.data.decode("UTF-8")
+
+#     env.read_env(io.StringIO(payload))
+# else:
+#     raise Exception("No local .env or GOOGLE_CLOUD_PROJECT detected. No secrets found.")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-g9!xu#6o0u%^j71u4_v-u#y3!rk9a_1b8a92cpy)u-)dgxs_gx'
 # SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = "*"
+DEBUG = False
 # DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -123,7 +145,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 STATIC_URL = '/static/'
 
 # Default primary key field type
@@ -141,4 +163,4 @@ LOGOUT_REDIRECT_URL='/book_manager/login'
 
 # CORS_ORIGIN_WHITELIST = env.list('CORS_ORIGIN_WHITELIST')
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

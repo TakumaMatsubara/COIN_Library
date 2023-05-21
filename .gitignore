@@ -1,8 +1,8 @@
 .vscode
 coin-book-pre-ver/
 migrations/
-firebase/
-firebase-tools-instant-win.exe
+settings_local.py
+static/admin/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
